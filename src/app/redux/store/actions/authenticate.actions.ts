@@ -1,4 +1,4 @@
-import { createAction, createActionGroup, props } from '@ngrx/store';
+import { createAction, props } from '@ngrx/store';
 
 // type loginStatus = 'success' | 'failure';
 
@@ -12,10 +12,5 @@ const onLoginFailureAction = createAction(onLoginFailure, props<{ isError: boole
 
 
 export {
-    onLogin,
-    onLoginSuccess,
-    onLoginFailure,
-    onLoginAction,
-    onLoginSuccessAction,
-    onLoginFailureAction
+    onLogin, onLoginAction, onLoginFailure, onLoginFailureAction, onLoginSuccess, onLoginSuccessAction
 };

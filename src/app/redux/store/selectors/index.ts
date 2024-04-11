@@ -1,1 +1,1 @@
-export * from './authenticate.selectors'
+export * from './authenticate.selectors';

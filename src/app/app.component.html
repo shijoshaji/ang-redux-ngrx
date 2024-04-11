@@ -11,8 +11,9 @@
 
     <ng-container>
       <!-- NOTE: with grx -->
-      <div *ngIf="isSuccess$" class="alert alert-success rounded-2 m-3 small">Login Success</div>
-      <div *ngIf="isError$" class="alert alert-danger rounded-2 m-3 small">Login Failed / Wrong Credentials</div>
+      <div *ngIf="isSuccessNgrx$ | async" class="alert alert-success rounded-2 m-3 small">Ngrx Login Success</div>
+      <div *ngIf="isErrorNgrx$ | async" class="alert alert-danger rounded-2 m-3 small">Ngrx Login Failed / Wrong
+        Credentials</div>
     </ng-container>
 
     <form [formGroup]="userForm" (ngSubmit)="submitForm()">
