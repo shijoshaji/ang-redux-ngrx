@@ -4,15 +4,15 @@ import { onLoginAction, onLoginFailureAction, onLoginSuccessAction } from '../ac
 
 
 interface authState {
-    username: string;
-    password: string;
+    usernameFC: string;
+    passwordFC: string;
     isSuccess: boolean;
     isError: boolean;
 }
 
 const initialState: authState = {
-    username: '',
-    password: '',
+    usernameFC: '',
+    passwordFC: '',
     isSuccess: false,
     isError: false
 };

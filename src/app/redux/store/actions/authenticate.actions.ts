@@ -6,7 +6,7 @@ const onLogin = '[App Component] Login Action';
 const onLoginSuccess = '[App Component] Login Success Action';
 const onLoginFailure = '[App Component] Login Failure Action';
 
-const onLoginAction = createAction(onLogin, props<{ username: string; password: string; }>());
+const onLoginAction = createAction(onLogin, props<{ usernameFC: string; passwordFC: string; }>());
 const onLoginSuccessAction = createAction(onLoginSuccess, props<{ isSuccess: boolean; }>());
 const onLoginFailureAction = createAction(onLoginFailure, props<{ isError: boolean; }>());
 

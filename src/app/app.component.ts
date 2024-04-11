@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import { onLoginAction } from './redux/store';
 
 @Component({
   selector: 'app-root',
@@ -14,22 +16,28 @@ export class AppComponent implements OnInit {
   isSuccess!: boolean;
   isError!: boolean;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private store: Store) { }
 
 
+
+  // submitForm() {
+  //   // NOTE: Without ngrx
+  //   console.log('submitted', this.userForm.value);
+
+  //   const { usernameFC, passwordFC } = this.userForm.value;
+  //   if (usernameFC === 'admin@admin.com' && passwordFC === 'admin123') {
+  //     this.isSuccess = true;
+  //     this.isError = !this.isSuccess;
+  //     return;
+  //   }
+  //   this.isError = true;
+  //   this.isSuccess = !this.isError;
+
+  // }
 
   submitForm() {
-    console.log('submitted', this.userForm.value);
-
-    const { usernameFC, passwordFC } = this.userForm.value;
-    if (usernameFC === 'admin@admin.com' && passwordFC === 'admin123') {
-      this.isSuccess = true;
-      this.isError = !this.isSuccess;
-      return;
-    }
-    this.isError = true;
-    this.isSuccess = !this.isError;
-
+    // NOTE: using ngrx
+    this.store.dispatch(onLoginAction(this.userForm.value));
   }
 
   initForm() {
