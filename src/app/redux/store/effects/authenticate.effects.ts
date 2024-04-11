@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { tap } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { EMPTY, catchError, map } from 'rxjs';
 import { onLogin, onLoginFailureAction, onLoginSuccessAction } from '../actions';
+import { appState } from '../selectors';
 
 @Injectable()
 export default class AuthenticationEffect {
@@ -9,20 +11,20 @@ export default class AuthenticationEffect {
     login$ = createEffect(() =>
         this.actions$.pipe(
             ofType(onLogin),
-            tap((state) => {
-                console.log('tap state', state);
+            map((state) => {
+                // console.log('tap state', state);
                 const { usernameFC, passwordFC } = state;
                 if (usernameFC === 'admin@admin.com' && passwordFC === 'admin123') {
-                    onLoginSuccessAction({ isSuccess: true });
+                    return onLoginSuccessAction({ isSuccess: true });
                 } else {
-                    onLoginFailureAction({ isError: true });
+                    return onLoginFailureAction({ isError: true });
 
                 }
-
-            })),
-        { dispatch: false }
+            }),
+            catchError((err) => EMPTY)
+        )
     );
 
 
-    constructor(private actions$: Actions) { }
+    constructor(private actions$: Actions, private store: Store<appState>) { }
 }

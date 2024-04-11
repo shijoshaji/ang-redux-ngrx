@@ -4,8 +4,15 @@
   </div>
   <div class="alert alert-light text-left rounded-3 shadow-lg ">
     <ng-container>
-      <div *ngIf="isSuccess" class="alert alert-success rounded-2 m-3 small">Login Success</div>
-      <div *ngIf="isError" class="alert alert-danger rounded-2 m-3 small">Login Failed / Wrong Credentials</div>
+      <!-- NOTE: Without ngrx -->
+      <!-- <div *ngIf="isSuccess" class="alert alert-success rounded-2 m-3 small">Login Success</div>
+      <div *ngIf="isError" class="alert alert-danger rounded-2 m-3 small">Login Failed / Wrong Credentials</div> -->
+    </ng-container>
+
+    <ng-container>
+      <!-- NOTE: with grx -->
+      <div *ngIf="isSuccess$" class="alert alert-success rounded-2 m-3 small">Login Success</div>
+      <div *ngIf="isError$" class="alert alert-danger rounded-2 m-3 small">Login Failed / Wrong Credentials</div>
     </ng-container>
 
     <form [formGroup]="userForm" (ngSubmit)="submitForm()">

@@ -17,7 +17,7 @@ import AuthenticationEffect from './redux/store/effects/authenticate.effects';
     BrowserModule,
     AppRoutingModule, FormsModule, ReactiveFormsModule,
     StoreModule.forRoot({
-      authstore: authReducer
+      authStore: authReducer
     }),
     EffectsModule.forRoot(AuthenticationEffect)
   ],

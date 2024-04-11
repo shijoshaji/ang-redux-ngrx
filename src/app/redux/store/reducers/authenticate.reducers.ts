@@ -3,7 +3,7 @@ import { createReducer, on } from '@ngrx/store';
 import { onLoginAction, onLoginFailureAction, onLoginSuccessAction } from '../actions';
 
 
-interface authState {
+export interface authState {
     usernameFC: string;
     passwordFC: string;
     isSuccess: boolean;
